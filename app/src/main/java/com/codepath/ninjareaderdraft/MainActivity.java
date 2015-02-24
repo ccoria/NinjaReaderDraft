@@ -1,27 +1,52 @@
 package com.codepath.ninjareaderdraft;
 
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
+    private String TAG = this.getClass().getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArticleArrayAdapter articleArrayAdapter =
-                new ArticleArrayAdapter(this, Article.GetFakeArticles());
+        this.setUpListFragment();
+    }
 
-        ListView lvReadingItems = (ListView) findViewById(R.id.lvArticles);
+    public void setUpListFragment() {
+        // Begin the transaction
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
-        lvReadingItems.setAdapter(articleArrayAdapter);
+        ReadingListFragment fragment = ReadingListFragment.newInstance("", "");
+        // Replace the container with the new fragment
+        ft.replace(R.id.frame_main, fragment);
+        // or ft.add(R.id.your_placeholder, new FooFragment());
+        // Execute the changes specified
+        ft.commit();
+    }
+
+    public void setUpArticleFragment() {
+        // Begin the transaction
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+        ArticleFragment fragment = ArticleFragment.newInstance("", "");
+        // Replace the container with the new fragment
+        ft.replace(R.id.frame_main, fragment);
+        // or ft.add(R.id.your_placeholder, new FooFragment());
+        // Execute the changes specified
+        ft.commit();
+
+        ((TextView) findViewById(R.id.tvNinjaTitle)).setText("");
     }
 
 
