@@ -18,19 +18,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ninja Reader"
-        android:id="@+id/textView"
+        android:id="@+id/tvNinjaTitle"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
         android:textColor="#000000"
         android:textSize="25dp" />
 
-    <ListView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/lvArticles"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tvNinjaTitle"
+        android:layout_marginTop="10dp"
+        android:id="@+id/frame_main">
+    </FrameLayout>
+
+
 </RelativeLayout>

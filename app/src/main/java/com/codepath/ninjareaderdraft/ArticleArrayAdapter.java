@@ -1,7 +1,9 @@
 package com.codepath.ninjareaderdraft;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Movie;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,14 @@ public class ArticleArrayAdapter extends ArrayAdapter<Article> {
                     .inflate(R.layout.reading_item, parent, false);
         }
 
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity activity = (MainActivity) getContext();
+                activity.setUpArticleFragment();
+            }
+        });
+
         TextView tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
         TextView tvItemNumber = (TextView) convertView.findViewById(R.id.tvItemNumber);
         tvTitle.setText(article.getTitle());
@@ -37,7 +47,10 @@ public class ArticleArrayAdapter extends ArrayAdapter<Article> {
     }
 
     private String getNumber(int position) {
+        // http://unicode-search.net/unicode-namesearch.pl?term=circled
         String[] circledNumbers = new String[]{"①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧", "⑨", "⑩"};
+        circledNumbers[0] = "➊";
+        circledNumbers[1] = "➋";
         return circledNumbers[position];
     }
 }
