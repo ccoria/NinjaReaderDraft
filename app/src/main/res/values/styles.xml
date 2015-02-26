@@ -5,9 +5,12 @@
         <!-- Customize your theme here. -->
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
+        <item name="actionBarStyle">@style/AppTheme.ActionBar</item>
     </style>
     <style name="AppTheme.ActionBar" parent="Base.Widget.AppCompat.ActionBar">
         <item name="background">@android:color/black</item>
     </style>
+
+    <color name="red">#C70025</color>
 
 </resources>
